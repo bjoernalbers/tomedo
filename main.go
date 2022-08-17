@@ -35,7 +35,7 @@ func tomedoUsers() ([]user, error) {
 		return users, err
 	}
 
-	query := "select kuerzel,vorname,nachname from nutzer where visible = true and kuerzel not in ('test','zollsoft','admin') order by kuerzel"
+	query := "select kuerzel,vorname,nachname from nutzer where visible = true and kuerzel not in ('admin','Arzeko','test','zollsoft') order by kuerzel"
 	rows, err := db.Query(query)
 	if err != nil {
 		return users, err
