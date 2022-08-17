@@ -21,7 +21,7 @@ func main() {
 		log.Fatal(err)
 	}
 	for _, u := range users {
-		fmt.Println(u.username, u.forename, u.surname)
+		fmt.Printf("%s %s (%s)\n", u.forename, u.surname, u.username)
 	}
 }
 
