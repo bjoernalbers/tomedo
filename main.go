@@ -5,6 +5,8 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"os"
+	"path/filepath"
 
 	_ "github.com/lib/pq"
 )
@@ -13,6 +15,11 @@ type user struct {
 	username string
 	forename string
 	surname  string
+}
+
+func init() {
+	log.SetPrefix(fmt.Sprintf("%s: ", filepath.Base(os.Args[0])))
+	log.SetFlags(0)
 }
 
 func main() {
