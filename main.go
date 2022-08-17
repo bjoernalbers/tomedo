@@ -9,25 +9,43 @@ import (
 	_ "github.com/lib/pq"
 )
 
+type user struct {
+	username string
+	forename string
+	surname  string
+}
+
 func main() {
+	users, err := tomedoUsers()
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, u := range users {
+		fmt.Println(u.username, u.forename, u.surname)
+	}
+}
+
+// tomedoUsers returns all users found in tomedo's database
+func tomedoUsers() ([]user, error) {
+	var users []user
+
 	uri := "postgresql://zollsoft_readonly:tomedo@tomedo/tomedo"
 	db, err := sql.Open("postgres", uri)
 	if err != nil {
-		log.Fatal(err)
+		return users, err
 	}
 
 	query := "select kuerzel,vorname,nachname from nutzer where visible = true and kuerzel not in ('test','zollsoft','admin') order by kuerzel"
 	rows, err := db.Query(query)
 	if err != nil {
-		log.Fatal(err)
+		return users, err
 	}
 	defer rows.Close()
-	var kuerzel, vorname, nachname string
+
 	for rows.Next() {
-		rows.Scan(&kuerzel, &vorname, &nachname)
-		fmt.Println(kuerzel, vorname, nachname)
+		var u user
+		rows.Scan(&u.username, &u.forename, &u.surname)
+		users = append(users, u)
 	}
-	if err = rows.Err(); err != nil {
-		log.Fatal(err)
-	}
+	return users, rows.Err()
 }
