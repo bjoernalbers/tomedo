@@ -11,12 +11,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-type user struct {
-	username string
-	forename string
-	surname  string
-}
-
 func init() {
 	log.SetPrefix(fmt.Sprintf("%s: ", filepath.Base(os.Args[0])))
 	log.SetFlags(0)
@@ -28,8 +22,18 @@ func main() {
 		log.Fatal(err)
 	}
 	for _, u := range users {
-		fmt.Printf("%s %s (%s)\n", u.forename, u.surname, u.username)
+		fmt.Println(u)
 	}
+}
+
+type user struct {
+	username string
+	forename string
+	surname  string
+}
+
+func (u user) String() string {
+	return fmt.Sprintf("%s %s (%s)", u.forename, u.surname, u.username)
 }
 
 // tomedoUsers returns all users found in tomedo's database
