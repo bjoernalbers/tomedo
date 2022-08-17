@@ -1,4 +1,4 @@
-module github.com/bjoernalbers/postgresql
+module github.com/bjoernalbers/tomedo-users
 
 go 1.18
 
