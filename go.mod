@@ -1,4 +1,4 @@
-module github.com/bjoernalbers/tomedo-users
+module github.com/bjoernalbers/tomedo
 
 go 1.18
 

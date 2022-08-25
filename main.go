@@ -1,4 +1,4 @@
-// tomedo-users displays all tomedo users (only real people w/o special users)
+// tomedo displays all tomedo users (only real people w/o special users)
 package main
 
 import (
