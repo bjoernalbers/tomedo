@@ -9,13 +9,13 @@ import (
 )
 
 type User struct {
-	username string
-	forename string
-	surname  string
+	Name      string
+	FirstName string
+	LastName  string
 }
 
 func (u User) String() string {
-	return fmt.Sprintf("%s %s (%s)", u.forename, u.surname, u.username)
+	return fmt.Sprintf("%s %s (%s)", u.FirstName, u.LastName, u.Name)
 }
 
 // tomedoUsers returns all users found in tomedo's database
@@ -37,7 +37,7 @@ func Users() ([]User, error) {
 
 	for rows.Next() {
 		var u User
-		rows.Scan(&u.username, &u.forename, &u.surname)
+		rows.Scan(&u.Name, &u.FirstName, &u.LastName)
 		users = append(users, u)
 	}
 	return users, rows.Err()
