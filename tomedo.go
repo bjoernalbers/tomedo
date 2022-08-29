@@ -4,6 +4,8 @@ package tomedo
 import (
 	"database/sql"
 	"fmt"
+
+	_ "github.com/lib/pq"
 )
 
 type User struct {

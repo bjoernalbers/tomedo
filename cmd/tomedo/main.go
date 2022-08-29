@@ -8,7 +8,6 @@ import (
 	"path/filepath"
 
 	"github.com/bjoernalbers/tomedo"
-	_ "github.com/lib/pq"
 )
 
 func init() {
