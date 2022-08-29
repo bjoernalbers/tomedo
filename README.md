@@ -22,7 +22,7 @@ Both methods will install the binary into `$GOBIN` which defaults to
 In case you just want to use the "tomedo" Go-package, install it like this
 within your module:
 
-    $ go get github.com/bjoernalbers/
+    $ go get github.com/bjoernalbers/tomedo
 
 ## Usage
 
